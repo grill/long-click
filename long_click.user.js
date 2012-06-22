@@ -2,10 +2,9 @@
 // @name        long-click
 // @namespace   grill
 // @include     *
-// @copyright     20012+, Gabriel Grill (https://github.com/grill/long-click)
+// @copyright   20012, Gabriel Grill (https://github.com/grill/long-click)
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
 // @description This script opens a link in a new tab in the background when it's clicked for a second.
-
 // @version     2
 // ==/UserScript==
 $(document).ready(function() {

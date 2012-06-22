@@ -1,9 +1,12 @@
 // ==UserScript==
-// @name        long_click
-// @namespace   clicking
+// @name        long-click
+// @namespace   grill
 // @include     *
-// @require  http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
-// @version     1
+// @copyright     20012+, Gabriel Grill (https://github.com/grill/long-click)
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+// @description This script opens a link in a new tab in the background when it's clicked for a second.
+
+// @version     2
 // ==/UserScript==
 $(document).ready(function() {
 var longclick = false;
@@ -20,7 +23,7 @@ $("a").mousedown(function(e) {
 		 GM_openInTab($(e.target).prop("href"));
 		 cancel = true;
       }
-   }, 800);
+   }, 500);
 
    $(e.target).bind('click', function(event) {
       if(cancel) {
@@ -32,9 +35,9 @@ $("a").mousedown(function(e) {
 	  $(e.target).unbind('click');
    });
 
-   $(e.target).bind('mousemove', function() {
+   $(e.target).bind('mouseleave', function() {
       longclick = false;
-	  $(e.target).unbind('mousemove');
+	  $(e.target).unbind('mouseleave');
    });
 });
 

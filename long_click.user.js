@@ -12,32 +12,33 @@ var longclick = false;
 var cancel = false;
 
 $("a").mousedown(function(e) {
-   longclick = true;
+   if(e.which == 1) {
+      longclick = true;
 
+      setTimeout(function() {
+         if(longclick) {
+		    longclick = false;
+		    $(e.target).unbind('mousemove');
+		    GM_openInTab($(e.target).prop("href"));
+		    cancel = true;
+         }
+      }, 500);
 
-   setTimeout(function() {
-      if(longclick) {
-		 longclick = false;
-		 $(e.target).unbind('mousemove');
-		 GM_openInTab($(e.target).prop("href"));
-		 cancel = true;
-      }
-   }, 500);
+      $(e.target).bind('click', function(event) {
+         if(cancel) {
+	        cancel = false;
+		    event.preventDefault();
+	     } else {
+            longclick = false;
+	     }
+	     $(e.target).unbind('click');
+      });
 
-   $(e.target).bind('click', function(event) {
-      if(cancel) {
-	     cancel = false;
-		 event.preventDefault();
-	  } else {
+      $(e.target).bind('mouseleave', function() {
          longclick = false;
-	  }
-	  $(e.target).unbind('click');
-   });
-
-   $(e.target).bind('mouseleave', function() {
-      longclick = false;
-	  $(e.target).unbind('mouseleave');
-   });
+	     $(e.target).unbind('mouseleave');
+      });
+   }
 });
 
 });

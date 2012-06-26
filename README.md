@@ -1,7 +1,6 @@
 Open With Long-Click
 ====================
-
-This script opens a link in a new tab in the background when it's clicked for a second.
+This script was written for the Firefox extension Greasemonkey and is also available at [userscripts.org](http://userscripts.org/scripts/show/136787). This script opens a link in a new tab in the background when it's clicked for a second.
 
 ============================================================================
 
